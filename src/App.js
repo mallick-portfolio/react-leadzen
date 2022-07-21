@@ -1,9 +1,10 @@
 import React from "react";
+import People from "./components/People.jsx";
 
 const App = () => {
   return (
     <div>
-      <h1>hello world</h1>
+      <People />
     </div>
   );
 };
