@@ -30,6 +30,17 @@ const Pagination = ({ setUsers }) => {
         breakLabel="..."
         marginPagesDisplayed={1}
         onPageChange={handlePageClick}
+        className={"flex"}
+        pageClassName={
+          "px-2 py-1 border border-red-500 mx-1 rounded-sm text-xl text-red-500"
+        }
+        previousClassName={
+          "px-2 py-1 border border-red-500 mx-1 rounded-sm text-xl text-white"
+        }
+        nextClassName={
+          "px-2 py-1 border border-red-500 mx-1 rounded-sm text-xl text-white"
+        }
+        activeClassName={"bg-red-500 text-white"}
       />
     </div>
   );
