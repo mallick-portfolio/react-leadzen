@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Pagination from "./Pagination.jsx";
 import PeopleCart from "./PeopleCart.jsx";
 
 const People = () => {
@@ -15,14 +16,16 @@ const People = () => {
     loadUsers();
     setLoading(false);
   }, []);
-  console.log(users.results);
   return (
-    <div className="px-12 mx-auto bg-[#ccc] h-screen w-screen">
-      {loading
-        ? "loading..."
-        : users?.results?.map((user) => (
-            <PeopleCart key={user?.created} user={user} />
-          ))}
+    <div className="bg-[#ccc] h-auto w-screen px-12 mx-auto py-8">
+      {loading ? (
+        <h1 className="text-red-500 text-center">loading...</h1>
+      ) : (
+        users?.results?.map((user) => (
+          <PeopleCart key={user?.created} user={user} />
+        ))
+      )}
+      <Pagination setUsers={setUsers}  />
     </div>
   );
 };
