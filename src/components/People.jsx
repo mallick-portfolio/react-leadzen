@@ -2,10 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination.jsx";
 import PeopleCart from "./PeopleCart.jsx";
+import UserModal from "./UserModal.jsx";
 
 const People = () => {
   const [users, setUsers] = useState({});
+  const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     const loadUsers = async () => {
       setLoading(true);
@@ -22,10 +25,16 @@ const People = () => {
         <h1 className="text-red-500 text-center">loading...</h1>
       ) : (
         users?.results?.map((user) => (
-          <PeopleCart key={user?.created} user={user} />
+          <PeopleCart
+            key={user?.created}
+            user={user}
+            setUrl={setUrl}
+            setShow={setShow}
+          />
         ))
       )}
-      <Pagination setUsers={setUsers}  />
+      {url && <UserModal url={url} setShow={setShow} show={show} />}
+      <Pagination setUsers={setUsers} />
     </div>
   );
 };
